@@ -1,7 +1,7 @@
 <?jelly escape-by-default='true'?>
 <j:jelly xmlns:j="jelly:core" xmlns:f="/lib/form">
     <!-- Ranorex Test Suite File-->
-    <f:entry title="${%Ranorex test suite file}" field="rxTestSuiteFilePath">
+    <f:entry title="${%Ranorex test suite file/exe}" field="rxTestSuiteFilePath">
         <f:textbox name="rxTestSuiteFilePath"/>
     </f:entry>
     <!-- Advanced Section -->
