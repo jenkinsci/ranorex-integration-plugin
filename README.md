@@ -73,7 +73,7 @@ Allows you to specify the file name of the compressed report with the standard p
 #### Global parameters
 
 Allows you to create or override values for global parameters set in the test suite.
-Enter parameters according to the following pattern: "ParameterName=Value"
+Enter parameters according to the following pattern: "/pa:ParameterName=Value"
 Separate parameters with semicolons or newlines.
 
 #### Command line arguments
