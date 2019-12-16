@@ -43,7 +43,7 @@ public class RanorexParameter extends BaseArgument {
             int equalsPosition = parameterString.indexOf("=");
             int separatorPosition = parameterString.indexOf(SEPARATOR);
             
-            splitParam[1] = IsStartingWithSlash(parameterString) ? parameterString.substring(separatorPosition + 1, equalsPosition) : parameterString.substring(0, equalsPosition);
+            splitParam[1] = isStartingWithSlash(parameterString) ? parameterString.substring(separatorPosition + 1, equalsPosition) : parameterString.substring(0, equalsPosition);
             splitParam[2] = parameterString.substring(equalsPosition + 1, parameterString.length());
             
         } else {
@@ -74,7 +74,7 @@ public class RanorexParameter extends BaseArgument {
 
     public static String tryExtractFlag(String parameterString) {
         int separatorPosition = parameterString.indexOf(SEPARATOR);
-        if (IsStartingWithSlash(parameterString) && separatorPosition > 0) {
+        if (isStartingWithSlash(parameterString) && separatorPosition > 0) {
             String flag = parameterString.substring(0, separatorPosition);
             flag = StringUtil.removeHeadingSlash(flag);
             return flag;
@@ -83,7 +83,7 @@ public class RanorexParameter extends BaseArgument {
         }
     }
     
-    public static boolean IsStartingWithSlash(String parameterString)
+    public static boolean isStartingWithSlash(String parameterString)
     {
     	int slashPosition = parameterString.indexOf(SLASH);
     	return slashPosition == 0;
