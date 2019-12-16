@@ -98,6 +98,14 @@ class RanorexParameterTest {
     }
 
     @Test
+    void Constructor_ValidInputStringWithoutPaWithColon_ValidRanorexParameter() {
+        RanorexParameter valid = new RanorexParameter("TestName=http://test.com");
+        assertEquals("pa",valid.getFlag());
+        assertEquals("TestName",valid.getName());
+        assertEquals("http://test.com",valid.getValue());
+    }
+
+    @Test
     void Constructor_ValidInputStringParam_ValidRanorexParameter() {
         RanorexParameter valid = new RanorexParameter("/param:TestName=TestValue");
         assertEquals(valid.getFlag(), "param");
@@ -126,12 +134,6 @@ class RanorexParameterTest {
     @Test
     void extractFlag_ValidInputWithSlash_ValidFlag() {
         String flag = RanorexParameter.tryExtractFlag("/param:Test=test");
-        assertEquals("param", flag);
-    }
-
-    @Test
-    void extractFlag_ValidInputWithoutSlash_ValidFlag() {
-        String flag = RanorexParameter.tryExtractFlag("param:Test=test");
         assertEquals("param", flag);
     }
 

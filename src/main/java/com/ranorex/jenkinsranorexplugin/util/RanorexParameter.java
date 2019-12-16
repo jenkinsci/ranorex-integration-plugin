@@ -9,6 +9,7 @@ public class RanorexParameter extends BaseArgument {
             "pa", "param"
     ));
     private static final String SEPARATOR = ":";
+    private static final String SLASH = "/";
 
 
     public RanorexParameter(String parameterString) {
@@ -41,8 +42,10 @@ public class RanorexParameter extends BaseArgument {
         if (containsValidNameValuePair(parameterString)) {
             int equalsPosition = parameterString.indexOf("=");
             int separatorPosition = parameterString.indexOf(SEPARATOR);
-            splitParam[1] = parameterString.substring(separatorPosition + 1, equalsPosition);
+            
+            splitParam[1] = IsStartingWithSlash(parameterString) ? parameterString.substring(separatorPosition + 1, equalsPosition) : parameterString.substring(0, equalsPosition);
             splitParam[2] = parameterString.substring(equalsPosition + 1, parameterString.length());
+            
         } else {
             throw new InvalidParameterException("Parameter is not valid");
         }
@@ -71,12 +74,18 @@ public class RanorexParameter extends BaseArgument {
 
     public static String tryExtractFlag(String parameterString) {
         int separatorPosition = parameterString.indexOf(SEPARATOR);
-        if (separatorPosition > 0) {
+        if (IsStartingWithSlash(parameterString) && separatorPosition > 0) {
             String flag = parameterString.substring(0, separatorPosition);
             flag = StringUtil.removeHeadingSlash(flag);
             return flag;
         } else {
             throw new InvalidParameterException("Parameter '" + parameterString + "' does not contain a separator!");
         }
+    }
+    
+    public static boolean IsStartingWithSlash(String parameterString)
+    {
+    	int slashPosition = parameterString.indexOf(SLASH);
+    	return slashPosition == 0;
     }
 }
