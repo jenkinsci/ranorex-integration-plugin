@@ -100,9 +100,9 @@ class RanorexParameterTest {
     @Test
     void Constructor_ValidInputStringWithoutPaWithColon_ValidRanorexParameter() {
         RanorexParameter valid = new RanorexParameter("TestName=http://test.com");
-        assertEquals(valid.getFlag(), "pa");
-        assertEquals(valid.getName(), "TestName");
-        assertEquals(valid.getValue(), "http://test.com");
+        assertEquals("pa",valid.getFlag());
+        assertEquals("TestName",valid.getName());
+        assertEquals("http://test.com",valid.getValue());
     }
 
     @Test
